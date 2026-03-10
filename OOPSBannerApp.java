@@ -1,52 +1,28 @@
 /**
  * OOPSBannerApp
- * UC3 - String.join implementation
+ * UC4 - Banner using Array and Loop
+ * 
+ * @author Shaurya
+ * @version 4.0
  */
 
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        System.out.println(String.join("",
-                " *****   ",
-                " *****   ",
-                " *****   ",
-                " ***** "));
+        String[] banner = {
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *"));
+            String.join("", " *****   ", " *****   ", " *****   ", " ***** "),
+            String.join("", "*     *  ", "*     *  ", "*     *  ", "*     *"),
+            String.join("", "*     *  ", "*     *  ", "*     *  ", "*"),
+            String.join("", "*     *  ", "*     *  ", "*     *  ", " ***** "),
+            String.join("", "*     *  ", "*     *  ", "*     *  ", "      *"),
+            String.join("", "*     *  ", "*     *  ", "*     *  ", "*     *"),
+            String.join("", " *****   ", " *****   ", " *****   ", " ***** ")
+        };
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*"));
-
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                " ***** "));
-
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "      *"));
-
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *"));
-
-        System.out.println(String.join("",
-                " *****   ",
-                " *****   ",
-                " *****   ",
-                " ***** "));
+        for (String line : banner) {
+            System.out.println(line);
+        }
     }
 }
