@@ -1,16 +1,31 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * OOPSBannerApp
- * UC7 - Store Character Pattern in a Class
+ * UC8 - Use Map for Character Patterns and Render via Function
  *
  * @author Shaurya
- * @version 7.0
+ * @version 8.0
  */
 
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        CharacterPatternMap o = new CharacterPatternMap('O', new String[]{
+        Map<Character, String[]> patternMap = buildPatternMap();
+
+        renderBanner("OOPS", patternMap);
+    }
+
+    /**
+     * Build and return the character pattern map
+     */
+    public static Map<Character, String[]> buildPatternMap() {
+
+        Map<Character, String[]> map = new HashMap<>();
+
+        map.put('O', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -20,7 +35,7 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        CharacterPatternMap p = new CharacterPatternMap('P', new String[]{
+        map.put('P', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -30,7 +45,7 @@ public class OOPSBannerApp {
                 "*      "
         });
 
-        CharacterPatternMap s = new CharacterPatternMap('S', new String[]{
+        map.put('S', new String[]{
                 " ***** ",
                 "*      ",
                 "*      ",
@@ -40,38 +55,30 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        CharacterPatternMap[] word = {o, o, p, s};
-
-        for (int i = 0; i < 7; i++) {
-            StringBuilder line = new StringBuilder();
-
-            for (CharacterPatternMap cp : word) {
-                line.append(cp.getPattern()[i]).append("   ");
-            }
-
-            System.out.println(line);
-        }
+        return map;
     }
 
     /**
-     * Static inner class to store character and pattern mapping
+     * Render banner for any word
      */
-    static class CharacterPatternMap {
+    public static void renderBanner(String word, Map<Character, String[]> map) {
 
-        private char character;
-        private String[] pattern;
+        int height = 7;
 
-        public CharacterPatternMap(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+        for (int i = 0; i < height; i++) {
 
-        public char getCharacter() {
-            return character;
-        }
+            StringBuilder line = new StringBuilder();
 
-        public String[] getPattern() {
-            return pattern;
+            for (char c : word.toCharArray()) {
+
+                String[] pattern = map.get(c);
+
+                if (pattern != null) {
+                    line.append(pattern[i]).append("   ");
+                }
+            }
+
+            System.out.println(line);
         }
     }
 }
